@@ -1,0 +1,15 @@
+/* Базовый сброс */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #1e1e1e; /* Темный фон под стиль VS Code */
+  color: #cccccc;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
