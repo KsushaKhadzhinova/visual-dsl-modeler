@@ -1,105 +1,229 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visual DSL Modeler</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Visual DSL Modeler - Web-сервис визуального моделирования">
+<title>Visual DSL Modeler</title>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+<link rel="stylesheet" href="css/style.css">
 </head>
-<body class="page">
+<body class="theme-dark">
+<a href="#workspace" class="skip-link">Перейти к рабочей области</a>
+<div class="ide-layout" itemscope itemtype="https://schema.org/WebApplication">
+<meta itemprop="applicationCategory" content="DeveloperApplication">
+<meta itemprop="operatingSystem" content="Web">
 
-  <a href="#workspace" class="skip-link">Перейти к рабочей области</a>
+<div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+<meta itemprop="price" content="0.00">
+<meta itemprop="priceCurrency" content="USD">
+</div>
+<div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+<meta itemprop="ratingValue" content="5.0">
+<meta itemprop="ratingCount" content="42">
+</div>
 
-  <header class="header" itemscope itemtype="https://schema.org/WebApplication">
-    <div class="header__brand">
-      <img itemprop="image" src="images/logo.svg" alt="Логотип Visual DSL Modeler" class="header__logo">
-      <h1 itemprop="name" class="header__title">Visual DSL Modeler</h1>
-      <meta itemprop="applicationCategory" content="DeveloperApplication">
-      <meta itemprop="operatingSystem" content="Web">
-    </div>
-
-    <nav class="header__nav" aria-label="Главное меню">
-      <button class="btn btn--primary" aria-label="Сохранить код">Save</button>
-      <button class="btn btn--success" aria-label="Скомпилировать диаграмму">Run</button>
-      <button class="btn btn--ai" aria-label="Сгенерировать через AI">AI ✨</button>
-      
-      <div class="user-profile">
-        <img src="images/avatar.jpg" alt="Аватар пользователя Ксения" class="user-profile__avatar">
-        <span class="user-profile__name">Ксения</span>
-      </div>
-    </nav>
-  </header>
-
-  <main id="workspace" class="workspace">
-    
-    <aside class="sidebar">
-      <h2 class="visually-hidden">Панель инструментов и шаблоны</h2>
-      <section class="sidebar__templates">
-        <h3 class="sidebar__subtitle">Шаблоны нотаций</h3>
-        <ul class="template-list">
-          <li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
-            <meta itemprop="programmingLanguage" content="DSL">
-            <meta itemprop="codeSampleType" content="Template">
-            <button itemprop="name">BPMN</button>
-          </li>
-          <li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
-            <meta itemprop="programmingLanguage" content="DSL">
-            <meta itemprop="codeSampleType" content="Template">
-            <button itemprop="name">UML</button>
-          </li>
-          <li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
-            <meta itemprop="programmingLanguage" content="DSL">
-            <meta itemprop="codeSampleType" content="Template">
-            <button itemprop="name">ERD</button>
-          </li>
-          <li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
-            <meta itemprop="programmingLanguage" content="DSL">
-            <meta itemprop="codeSampleType" content="Template">
-            <button itemprop="name">Petri Nets</button>
-          </li>
-        </ul>
-      </section>
-    </aside>
-
-    <section class="editor" aria-label="Редактор кода DSL">
-      <header class="editor__toolbar">
-        <h2 class="editor__filename">main.dsl</h2>
-        <time class="editor__last-saved" datetime="2026-04-19T12:00">Last saved: 12:00</time>
-      </header>
-      <div class="editor__code-area">
-        <textarea class="editor__textarea" aria-label="Ввод кода диаграммы" placeholder="Введите DSL код здесь..."></textarea>
-      </div>
-    </section>
-
-    <section class="preview" aria-label="Визуализация диаграммы">
-      <h2 class="visually-hidden">Предпросмотр диаграммы</h2>
-      <figure class="preview__canvas">
-        <img src="images/diagram-placeholder.svg" alt="Сгенерированная BPMN диаграмма процесса" class="preview__image">
-        <figcaption class="preview__caption">Сгенерировано движком Kroki (SVG)</figcaption>
-      </figure>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <section class="terminal" aria-label="Терминал и ошибки">
-      <div class="terminal__tabs">
-        <h3 class="terminal__tab terminal__tab--active">Terminal</h3>
-        <h3 class="terminal__tab">Problems <span class="badge badge--error">0</span></h3>
-      </div>
-      <div class="terminal__output">
-        <p>> Visual DSL Modeler initialized successfully.</p>
-        <p>> Ready to render...</p>
-      </div>
-    </section>
-
-    <div class="status-bar" role="contentinfo">
-      <span class="status-bar__item">UTF-8</span>
-      <span class="status-bar__item">Spaces: 2</span>
-      <span class="status-bar__item">DSL</span>
-      <span class="status-bar__item status-bar__item--git" role="status" aria-label="Статус Git">main*</span>
-    </div>
-  </footer>
-
+<header class="top-bar">
+<div class="top-bar__brand">
+<img itemprop="image" src="images/logo.svg" alt="Логотип Visual DSL Modeler" title="Visual DSL Modeler" class="top-bar__logo">
+<h1 itemprop="name" class="visually-hidden">Visual DSL Modeler</h1>
+</div>
+<nav class="top-bar__breadcrumbs" aria-label="Путь к файлу">
+<span class="breadcrumb-item">workspace</span>
+<span class="breadcrumb-separator">/</span>
+<span class="breadcrumb-item">diagrams</span>
+<span class="breadcrumb-separator">/</span>
+<strong class="breadcrumb-item breadcrumb-item--active">main.dsl</strong>
+</nav>
+<menu class="top-bar__actions" aria-label="Панель управления">
+<li><button class="btn btn--icon" aria-label="Импорт файла"><span class="icon icon-import"></span> Import</button></li>
+<li><button class="btn btn--icon" aria-label="Переключить тему (Светлая/Темная)"><span class="icon icon-theme"></span> Theme</button></li>
+<li><button class="btn btn--primary" aria-label="Сохранить код"><span class="icon icon-save"></span> Save</button></li>
+<li><button class="btn btn--success" aria-label="Запустить рендер"><span class="icon icon-run"></span> Run</button></li>
+<li><button class="btn btn--ai" aria-label="Сгенерировать AI"><span class="icon icon-ai"></span> AI</button></li>
+<li>
+<button class="btn btn--profile" aria-label="Профиль пользователя">
+<img src="images/avatar.jpg" alt="Аватар профиля" title="Профиль разработчика" class="profile-avatar">
+</button>
+</li>
+</menu>
+</header>
+<main id="workspace" class="workspace">
+<nav class="activity-bar" aria-label="Боковое меню">
+<menu class="activity-bar__menu">
+<li><button class="activity-bar__item activity-bar__item--active" aria-label="Шаблоны"><span class="icon icon-template"></span></button></li>
+<li><button class="activity-bar__item" aria-label="Поиск файлов"><span class="icon icon-search"></span></button></li>
+<li><button class="activity-bar__item" aria-label="Отладка"><span class="icon icon-debug"></span></button></li>
+<li><button class="activity-bar__item" aria-label="История версий"><span class="icon icon-history"></span></button></li>
+<li><button class="activity-bar__item" aria-label="Расширения и плагины"><span class="icon icon-plugin"></span></button></li>
+<li><button class="activity-bar__item" aria-label="Документация"><span class="icon icon-docs"></span></button></li>
+</menu>
+</nav>
+<aside class="sidebar" aria-label="Инструменты и настройки">
+<h2 class="visually-hidden">Панель настроек</h2>
+<form class="sidebar__form" action="/api/config" method="POST">
+<section class="sidebar__section">
+<h3 class="sidebar__subtitle">Шаблоны</h3>
+<menu class="template-list">
+<li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+<meta itemprop="programmingLanguage" content="DSL">
+<meta itemprop="codeSampleType" content="Template">
+<button type="button" itemprop="name" class="template-btn">UML</button>
+</li>
+<li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+<meta itemprop="programmingLanguage" content="DSL">
+<meta itemprop="codeSampleType" content="Template">
+<button type="button" itemprop="name" class="template-btn">BPMN</button>
+</li>
+<li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+<meta itemprop="programmingLanguage" content="DSL">
+<meta itemprop="codeSampleType" content="Template">
+<button type="button" itemprop="name" class="template-btn">ERD</button>
+</li>
+<li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+<meta itemprop="programmingLanguage" content="DSL">
+<meta itemprop="codeSampleType" content="Template">
+<button type="button" itemprop="name" class="template-btn">PETRI NETS</button>
+</li>
+<li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+<meta itemprop="programmingLanguage" content="DSL">
+<meta itemprop="codeSampleType" content="Template">
+<button type="button" itemprop="name" class="template-btn">IDEF0</button>
+</li>
+<li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+<meta itemprop="programmingLanguage" content="DSL">
+<meta itemprop="codeSampleType" content="Template">
+<button type="button" itemprop="name" class="template-btn">IDEF3</button>
+</li>
+<li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+<meta itemprop="programmingLanguage" content="DSL">
+<meta itemprop="codeSampleType" content="Template">
+<button type="button" itemprop="name" class="template-btn">DFD</button>
+</li>
+<li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+<meta itemprop="programmingLanguage" content="DSL">
+<meta itemprop="codeSampleType" content="Template">
+<button type="button" itemprop="name" class="template-btn">БЕЗ НОТАЦИИ</button>
+</li>
+</menu>
+</section>
+<fieldset class="sidebar__section">
+<legend class="sidebar__subtitle">Конфигурация рендера</legend>
+<div class="form-group">
+<label class="form-label" for="render-api">API для рендеринга:</label>
+<select class="form-select" id="render-api" name="render-api" required>
+<option value="" disabled selected>Выберите API</option>
+<option value="plantuml">PLANTUML</option>
+<option value="mermaid">MERMAID</option>
+<option value="graphviz">GRAPHVIZ</option>
+<option value="d2">D2 (D2LANG)</option>
+<option value="kroki">KROKI</option>
+<option value="text2diagram">TEXT2DIAGRAM</option>
+<option value="aidiagram">AI-DIAGRAM</option>
+<option value="gleek">GLEEK (DSL)</option>
+<option value="bpmnxml">BPMN XML/XMI</option>
+<option value="graphvizdot">GRAPHVIZ DOT</option>
+</select>
+</div>
+<div class="form-group form-group--checkbox">
+<input class="form-checkbox" type="checkbox" id="autocorrect" name="autocorrect" checked>
+<label class="form-label" for="autocorrect">Автоисправление и валидация</label>
+</div>
+</fieldset>
+<fieldset class="sidebar__section">
+<legend class="sidebar__subtitle">Сохранение и Экспорт</legend>
+<div class="form-group">
+<label class="form-label" for="save-location">Сохранить код в:</label>
+<select class="form-select" id="save-location" name="save-location" required>
+<option value="" disabled selected>Выберите место</option>
+<option value="device">На устройство</option>
+<option value="gdrive">Google Drive (API)</option>
+<option value="github">GitHub (API)</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="export-format">Экспорт диаграммы:</label>
+<select class="form-select" id="export-format" name="export-format" required>
+<option value="" disabled selected>Выберите формат</option>
+<option value="svg">SVG</option>
+<option value="png">PNG</option>
+<option value="ext">Расширение нотации</option>
+</select>
+<button type="button" class="btn btn--secondary btn--full-width" aria-label="Скачать файл диаграммы">Скачать диаграмму</button>
+</div>
+</fieldset>
+<fieldset class="sidebar__section">
+<legend class="sidebar__subtitle">AI Настройки</legend>
+<div class="form-group">
+<label class="form-label" for="ai-prompt">Системный Промпт:</label>
+<textarea class="form-textarea" id="ai-prompt" name="ai-prompt" placeholder="Инструкции для AI..."></textarea>
+</div>
+<div class="form-group">
+<label class="form-label" for="ai-apikey">Free API Key:</label>
+<input class="form-input" type="password" id="ai-apikey" name="ai-apikey" placeholder="Enter APIK">
+</div>
+</fieldset>
+<section class="sidebar__section">
+<h3 class="sidebar__subtitle">История версий</h3>
+<div class="version-controls">
+<button type="button" class="btn btn--secondary" aria-label="Сравнить версии (Diff)">Diff версий</button>
+<button type="button" class="btn btn--warning" aria-label="Откат к предыдущей версии">Откат</button>
+</div>
+</section>
+</form>
+</aside>
+<section class="editor" aria-label="Текстовый редактор">
+<h2 class="visually-hidden">Зона кода</h2>
+<div class="editor__code-area">
+<label class="visually-hidden" for="dsl-code">Ввод кода диаграммы</label>
+<textarea class="editor__textarea" id="dsl-code" name="dsl-code" aria-label="Ввод кода диаграммы" placeholder="Начните писать DSL код здесь..." required></textarea>
+</div>
+</section>
+<section class="preview" aria-label="Визуализация">
+<h2 class="visually-hidden">Предпросмотр диаграммы</h2>
+<figure class="preview__canvas">
+<img src="images/diagram-placeholder.svg" alt="Сгенерированная диаграмма" title="Результат рендеринга" class="preview__image">
+<figcaption class="visually-hidden">Визуальное представление сгенерированной модели</figcaption>
+</figure>
+</section>
+</main>
+<section class="terminal-panel" aria-label="Панель вывода">
+<h2 class="visually-hidden">Консоль и проблемы</h2>
+<div class="terminal-panel__tabs">
+<button class="terminal-panel__tab terminal-panel__tab--active">Terminal</button>
+<button class="terminal-panel__tab">Problems <span class="badge badge--error" role="status" aria-label="Количество ошибок">0</span></button>
+</div>
+<div class="terminal-panel__content">
+<samp class="console-text">&gt; Visual DSL Modeler is running...</samp><br>
+<samp class="console-text">&gt; Ready for compilation.</samp>
+</div>
+</section>
+<footer class="status-bar">
+<div class="status-bar__left">
+<span class="status-item" role="status" aria-label="Ошибки и предупреждения"><span class="icon icon-error"></span> 0 <span class="icon icon-warning"></span> 0</span>
+<span class="status-item status-item--git" role="status" aria-label="Куда мы пушим"><span class="icon icon-upload"></span> GitHub (main)</span>
+<span class="status-item" role="status" aria-label="Последний пуш и сохранение">Last Push: 10:00 | Saved: 10:05</span>
+</div>
+<div class="toast-container" aria-live="polite">
+<div class="toast toast--ok" role="alert"><span class="icon icon-check"></span> OK: Success</div>
+<div class="toast toast--warning visually-hidden" role="alert"><span class="icon icon-warning"></span> Warning: Unused node</div>
+<div class="toast toast--error visually-hidden" role="alert"><span class="icon icon-error"></span> Error: Syntax error</div>
+</div>
+<div class="status-bar__right">
+<span class="status-item" role="status" aria-label="Строки и колонки">Ln 42, Col 15</span>
+<span class="status-item" role="status" aria-label="Табуляция">Spaces: 2</span>
+<span class="status-item" role="status" aria-label="Кодировка">UTF-8</span>
+<span class="status-item" role="status" aria-label="Язык программы">DSL</span>
+<span class="status-item" role="status" aria-label="Язык приложения">EN</span>
+<span class="status-item" role="status" aria-label="Уведомления"><span class="icon icon-bell"></span> 0</span>
+<span class="status-item" role="status" aria-label="Копирайт">&copy; 2026 Visual DSL Modeler</span>
+</div>
+</footer>
+</div>
+<script src="js/script.js" defer></script>
 </body>
 </html>
