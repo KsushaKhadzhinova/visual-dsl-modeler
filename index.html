@@ -6,15 +6,100 @@
   <title>Visual DSL Modeler</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <div id="app">
-    <header>
-      <h1>Visual DSL Modeler</h1>
-      <p>Diagram-as-Code Web Service</p>
-    </header>
-    <main>
-      </main>
-  </div>
-  <script src="js/script.js"></script>
+<body class="page">
+
+  <a href="#workspace" class="skip-link">Перейти к рабочей области</a>
+
+  <header class="header" itemscope itemtype="https://schema.org/WebApplication">
+    <div class="header__brand">
+      <img itemprop="image" src="images/logo.svg" alt="Логотип Visual DSL Modeler" class="header__logo">
+      <h1 itemprop="name" class="header__title">Visual DSL Modeler</h1>
+      <meta itemprop="applicationCategory" content="DeveloperApplication">
+      <meta itemprop="operatingSystem" content="Web">
+    </div>
+
+    <nav class="header__nav" aria-label="Главное меню">
+      <button class="btn btn--primary" aria-label="Сохранить код">Save</button>
+      <button class="btn btn--success" aria-label="Скомпилировать диаграмму">Run</button>
+      <button class="btn btn--ai" aria-label="Сгенерировать через AI">AI ✨</button>
+      
+      <div class="user-profile">
+        <img src="images/avatar.jpg" alt="Аватар пользователя Ксения" class="user-profile__avatar">
+        <span class="user-profile__name">Ксения</span>
+      </div>
+    </nav>
+  </header>
+
+  <main id="workspace" class="workspace">
+    
+    <aside class="sidebar">
+      <h2 class="visually-hidden">Панель инструментов и шаблоны</h2>
+      <section class="sidebar__templates">
+        <h3 class="sidebar__subtitle">Шаблоны нотаций</h3>
+        <ul class="template-list">
+          <li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+            <meta itemprop="programmingLanguage" content="DSL">
+            <meta itemprop="codeSampleType" content="Template">
+            <button itemprop="name">BPMN</button>
+          </li>
+          <li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+            <meta itemprop="programmingLanguage" content="DSL">
+            <meta itemprop="codeSampleType" content="Template">
+            <button itemprop="name">UML</button>
+          </li>
+          <li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+            <meta itemprop="programmingLanguage" content="DSL">
+            <meta itemprop="codeSampleType" content="Template">
+            <button itemprop="name">ERD</button>
+          </li>
+          <li class="template-list__item" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+            <meta itemprop="programmingLanguage" content="DSL">
+            <meta itemprop="codeSampleType" content="Template">
+            <button itemprop="name">Petri Nets</button>
+          </li>
+        </ul>
+      </section>
+    </aside>
+
+    <section class="editor" aria-label="Редактор кода DSL">
+      <header class="editor__toolbar">
+        <h2 class="editor__filename">main.dsl</h2>
+        <time class="editor__last-saved" datetime="2026-04-19T12:00">Last saved: 12:00</time>
+      </header>
+      <div class="editor__code-area">
+        <textarea class="editor__textarea" aria-label="Ввод кода диаграммы" placeholder="Введите DSL код здесь..."></textarea>
+      </div>
+    </section>
+
+    <section class="preview" aria-label="Визуализация диаграммы">
+      <h2 class="visually-hidden">Предпросмотр диаграммы</h2>
+      <figure class="preview__canvas">
+        <img src="images/diagram-placeholder.svg" alt="Сгенерированная BPMN диаграмма процесса" class="preview__image">
+        <figcaption class="preview__caption">Сгенерировано движком Kroki (SVG)</figcaption>
+      </figure>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <section class="terminal" aria-label="Терминал и ошибки">
+      <div class="terminal__tabs">
+        <h3 class="terminal__tab terminal__tab--active">Terminal</h3>
+        <h3 class="terminal__tab">Problems <span class="badge badge--error">0</span></h3>
+      </div>
+      <div class="terminal__output">
+        <p>> Visual DSL Modeler initialized successfully.</p>
+        <p>> Ready to render...</p>
+      </div>
+    </section>
+
+    <div class="status-bar" role="contentinfo">
+      <span class="status-bar__item">UTF-8</span>
+      <span class="status-bar__item">Spaces: 2</span>
+      <span class="status-bar__item">DSL</span>
+      <span class="status-bar__item status-bar__item--git" role="status" aria-label="Статус Git">main*</span>
+    </div>
+  </footer>
+
 </body>
 </html>

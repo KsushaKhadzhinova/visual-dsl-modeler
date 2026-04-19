@@ -1,0 +1,11 @@
+-- UI Colors (Dark Theme) --
+Primary Background: #1E1E1E
+Secondary Background (Sidebar/Terminal): #252526
+Accent (Buttons/Highlights): #007ACC
+Text Primary: #CCCCCC
+Error Red: #F14C4C
+Warning Yellow: #CCA700
+
+-- Typography --
+UI Font: 'Inter', sans-serif
+Code Font: 'Source Code Pro', monospace
